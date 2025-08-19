@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BasketBuddy — Before you checkout, check BasketBuddy.</title>
+<meta name="description" content="Paste your basket. We find it cheaper across UK stores with AI.">
+<style>
+:root{
+  --bg:#0e1111; --card:#101417; --accent:#34d399; --text:#e8f1ec; --muted:#9fb3a7;
+  --shadow:0 24px 48px rgba(0,0,0,.35); --radius:18px;
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:linear-gradient(160deg,#0a0f0e,#0e1412 40%,#0b100e);color:var(--text);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{height:34px}
+.brand-name{font-weight:800;letter-spacing:.3px}
+a,button{cursor:pointer}
+.btn{background:var(--accent);border:none;color:#042016;padding:12px 18px;border-radius:999px;
+  font-weight:700;box-shadow:var(--shadow);transition:.2s transform}
+.btn:hover{transform:translateY(-1px)}
+.btn.secondary{background:#1f2937;color:#e5f1ec;border:1px solid #374151}
+.btn.ghost{background:transparent;border:1px solid #1f4035;color:var(--text)}
+.card{background:radial-gradient(1200px 400px at 0% -20%, rgba(52,211,153,.06), transparent 40%),#0f1513;
+  border:1px solid rgba(255,255,255,.05);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.grid{display:grid;grid-template-columns: 1fr 1fr;gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.input, textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:var(--text);padding:12px 14px;border-radius:14px;outline:none}
+input::placeholder, textarea::placeholder{color:#93a39a}
+.small{font-size:.9rem;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:6px;background:rgba(52,211,153,.12);color:#9af3cd;
+  border:1px solid rgba(52,211,153,.25);padding:6px 10px;border-radius:999px;font-weight:600}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin:18px 0 28px}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}}
+h1{font-size:2rem;margin:.2rem 0 0.6rem;letter-spacing:.2px}
+h2{font-size:1.3rem;margin:0.2rem 0 0.4rem}
+.kbd{padding:4px 7px;border:1px solid #2a3b35;border-radius:8px;background:rgba(255,255,255,.05);
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;color:#cfe9dd}
+.note{border-left:3px solid var(--accent);padding:8px 12px;background:rgba(52,211,153,.06);border-radius:10px}
+.footer{opacity:.7;font-size:.9rem;margin-top:28px}
+.tr{display:grid;grid-template-columns: 1.5fr .8fr .8fr .8fr .8fr .6fr;gap:12px;align-items:center;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:12px 14px;border-radius:14px;margin-bottom:10px}
+@media(max-width:900px){.tr{grid-template-columns: 1fr 1fr 1fr;gap:10px} .hide-sm{display:none}}
+.price{font-weight:800}
+.badge{padding:4px 8px;border-radius:8px;font-weight:700}
+.hidden{display:none}
+hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:16px 0}
+.link{color:#a6ffe0;text-decoration:none;border-bottom:1px dashed rgba(166,255,224,.4)}
+.link:hover{opacity:.85}
+.view{display:none} .view.active{display:block}
+</style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="brand" onclick="location.hash='#home'" style="cursor:pointer">
+        <!-- Inline logo (replace if you want): -->
+        <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" aria-label="BasketBuddy Logo">
+          <rect rx="10" width="160" height="40" fill="#2E7D32"/>
+          <path d="M18 12h18a2 2 0 0 1 1.94 1.51l3.12 12.48A2 2 0 0 1 39.12 28H21.7l.76 4h15.66a2 2 0 1 1 0 4H20.24a2 2 0 0 1-1.97-1.57L14.2 10H10a2 2 0 1 1 0-4h6a2 2 0 0 1 1.94 1.51L18 12Z" fill="white"/>
+          <text x="52" y="26" fill="white" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16">BasketBuddy</text>
+        </svg>
+        <div class="brand-name">BasketBuddy</div>
+      </div>
+      <div>
+        <a class="btn ghost" href="#admin">Admin</a>
+        <a class="btn secondary" href="#privacy">Privacy</a>
+      </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="view active">
+      <section class="hero">
+        <div class="card">
+          <span class="tag">Save before you pay</span>
+          <h1>Paste your basket. We find it cheaper across UK stores.</h1>
+          <p class="small">Works with groceries and general items. We’ll match your items to cheaper alternatives or stores and you can buy in 1 click via our links.</p>
+          <form id="basket-form">
+            <label><strong>Your email (optional)</strong></label>
+            <input class="input" id="email" type="email" placeholder="you@example.com (for savings alerts)"/>
+            <label><strong>Paste your basket items (one per line)</strong></label>
+            <textarea id="basket-input" rows="9" class="input" placeholder="e.g.&#10;2L milk&#10;Warburtons bread 800g&#10;Fairy liquid 650ml&#10;USB C lightning cable 1m"></textarea>
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <button class="btn" type="submit">Find it cheaper</button>
+              <button class="btn ghost" id="demo-fill">Demo</button>
+            </div>
+            <p class="small">By continuing you agree that some links may be affiliate links (we may earn a commission at no extra cost to you).</p>
+          </form>
+        </div>
+        <div class="card">
+          <h2>How it works</h2>
+          <ol>
+            <li>Paste your basket.</li>
+            <li>We match items to our best-price database.</li>
+            <li>Click <span class="kbd">Buy</span> to jump to the store (with your affiliate tag).</li>
+          </ol>
+          <hr>
+          <p class="note">Tip: Update prices and links in <a class="link" href="#admin">Admin</a> anytime.</p>
+        </div>
+      </section>
+      <div class="footer">© <span id="y"></span> BasketBuddy — MVP test. <a class="link" href="#terms">Terms</a></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="view">
+      <div class="grid">
+        <div class="card">
+          <h2>Your cheaper matches</h2>
+          <div id="results-list"></div>
+        </div>
+        <div id="totals"></div>
+      </div>
+      <div class="footer">Prices are estimates. Always check final price at store checkout.</div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin" class="view">
+      <div id="gate" class="card">
+        <h2>Admin</h2>
+        <p class="small">To edit the product DB locally, toggle <code>Edit Mode</code> below. For production, update the JSON blob in this page and commit your repo.</p>
+        <div style="display:flex;gap:10px;margin:10px 0">
+          <button class="btn" id="toggle-edit">Edit Mode: Off</button>
+          <button class="btn ghost" id="download-leads">Download Leads CSV</button>
+        </div>
+        <h3 style="margin-top:10px">Products Database (JSON)</h3>
+        <textarea id="json" class="input" rows="18"></textarea>
+        <div style="margin-top:10px;display:flex;gap:10px">
+          <button id="save" class="btn">Save (Local Preview)</button>
+          <button id="reset" class="btn secondary">Reset to Default</button>
+        </div>
+        <p class="small">Local preview uses your browser storage. To go live, paste the same JSON back into this page and commit the file on GitHub (since this is a single-file app).</p>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy" class="view">
+      <div class="card">
+        <h2>Privacy</h2>
+        <p class="small">We store your email locally in your browser when provided for the purpose of savings alerts. We don’t sell your data. Affiliate links may be used.</p>
+      </div>
+    </section>
+
+    <!-- TERMS -->
+    <section id="terms" class="view">
+      <div class="card">
+        <h2>Terms</h2>
+        <p class="small">BasketBuddy is an MVP. Prices shown are estimates and may change at checkout. We may earn a commission on some links. Use at your own discretion.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Seed DB (you can edit live in Admin) -->
+  <script id="bb-db" type="application/json">
+  [
+    {
+      "sku": "milk-2l",
+      "name": "Semi-skimmed Milk 2L",
+      "alts": [
+        {"store":"Tesco","price":1.65,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"ASDA","price":1.60,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"Sainsbury's","price":1.70,"url":"https://www.sainsburys.co.uk/","affiliate_tag":"YOUR_TAG"}
+      ]
+    },
+    {
+      "sku": "bread-warburtons",
+      "name":"Warburtons Medium Sliced Bread 800g",
+      "alts":[
+        {"store":"Tesco","price":1.45,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"ASDA","price":1.40,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"Morrisons","price":1.45,"url":"https://groceries.morrisons.com/","affiliate_tag":"YOUR_TAG"}
+      ]
+    },
+    {
+      "sku":"iphone-usb-c-cable",
+      "name":"USB-C to Lightning Cable 1m",
+      "alts":[
+        {"store":"Amazon UK","price":8.99,"url":"https://www.amazon.co.uk/?tag=YOURTAG-21","affiliate_tag":"YOURTAG-21"},
+        {"store":"Argos","price":10.99,"url":"https://www.argos.co.uk/","affiliate_tag":""},
+        {"store":"Currys","price":11.99,"url":"https://www.currys.co.uk/","affiliate_tag":""}
+      ]
+    },
+    {
+      "sku":"fairy-650ml",
+      "name":"Fairy Liquid Original 650ml",
+      "alts":[
+        {"store":"Tesco","price":1.50,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"ASDA","price":1.45,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"B&M","price":1.39,"url":"https://www.bmstores.co.uk/","affiliate_tag":""}
+      ]
+    },
+    {
+      "sku":"lenor-1.2l",
+      "name":"Lenor Fabric Conditioner 1.2L",
+      "alts":[
+        {"store":"Tesco","price":3.50,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"ASDA","price":3.25,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
+        {"store":"Amazon UK","price":3.99,"url":"https://www.amazon.co.uk/?tag=YOURTAG-21","affiliate_tag":"YOURTAG-21"}
+      ]
+    }
+  ]
+  </script>
+
+  <script>
+  // Router (hash views)
+  const views = ["home","results","admin","privacy","terms"];
+  function showView(id){
+    views.forEach(v=>document.getElementById(v).classList.remove('active'));
+    (document.getElementById(id)||document.getElementById('home')).classList.add('active');
+  }
+  function parseHash(){
+    const h = location.hash.replace('#','') || 'home';
+    showView(h.split('&')[0]);
+  }
+  window.addEventListener('hashchange', parseHash);
+
+  // Utils
+  function normalize(s){ return (s||'').toLowerCase().replace(/[^a-z0-9\\s]/g,' ').replace(/\\s+/g,' ').trim() }
+  function score(a,b){
+    a=normalize(a); b=normalize(b);
+    if(!a||!b) return 0; if(a===b) return 1;
+    let hits=0; const wa=a.split(' '), wb=b.split(' ');
+    for(const x of wa){ if(wb.includes(x)) hits++; }
+    return hits/Math.max(wa.length, wb.length);
+  }
+  function bestAlt(alts){ return alts.reduce((m,a)=>m&&m.price<a.price?m:a) }
+  function money(n){ return '£'+Number(n).toFixed(2) }
+
+  // DB handling
+  function getDefaultDB(){
+    try{ return JSON.parse(document.getElementById('bb-db').textContent) }catch(e){ return [] }
+  }
+  function getDB(){
+    const override = localStorage.getItem('bb_products_override');
+    if(override){ try{ return JSON.parse(override) } catch(e){ return getDefaultDB() } }
+    return getDefaultDB();
+  }
+
+  // Leads CSV (local)
+  function appendLeadCSV(email, terms){
+    const now = new Date().toISOString();
+    const row = `${now},${email},${terms.replaceAll(',',';')}` + "\\n";
+    let csv = localStorage.getItem('bb_leads_csv') || "timestamp,email,terms\\n";
+    csv += row;
+    localStorage.setItem('bb_leads_csv', csv);
+  }
+  function downloadLeads(){
+    const csv = localStorage.getItem('bb_leads_csv') || "timestamp,email,terms\\n";
+    const blob = new Blob([csv], {type:'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download='basketbuddy-leads.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+
+  // Home
+  function initHome(){
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const form = document.getElementById('basket-form');
+    const textarea = document.getElementById('basket-input');
+    const email = document.getElementById('email');
+    const demo = document.getElementById('demo-fill');
+    if(demo){ demo.addEventListener('click', e=>{
+      e.preventDefault();
+      textarea.value = `2L milk\\nWarburtons bread 800g\\nFairy liquid 650ml\\nUSB C lightning cable 1m`;
+    });}
+    if(form){ form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const terms = textarea.value.trim();
+      if(!terms){ alert('Paste your basket first.'); return; }
+      if(email && email.value){ appendLeadCSV(email.value, terms); }
+      sessionStorage.setItem('bb_terms', terms);
+      location.hash = '#results';
+      setTimeout(renderResults, 0);
+    });}
+  }
+
+  // Results
+  function renderResults(){
+    const holder = document.getElementById('results-list');
+    const db = getDB();
+    const terms = sessionStorage.getItem('bb_terms') || '';
+    const list = normalize(terms).split('\\n').map(x=>x.trim()).filter(Boolean);
+    if(!holder) return;
+    if(list.length===0){ holder.innerHTML = '<p class="small">No basket found. Go back and paste your items.</p>'; return; }
+
+    let totalBest = 0, html='';
+    for(const item of list){
+      let best={score:0, product:null};
+      for(const p of db){
+        const s = score(item, p.name);
+        if(s>best.score) best={score:s, product:p};
+      }
+      if(!best.product || best.score<0.25){
+        html += `<div class="tr"><div><strong>${item}</strong><div class="small">No match in DB. Update in Admin.</div></div><div class="hide-sm"></div><div class="price hide-sm">-</div><div class="hide-sm">-</div><div></div><div class="small">—</div></div>`;
+        continue;
+      }
+      const alt = bestAlt(best.product.alts);
+      const alts = best.product.alts.map(a=>`<span class="badge">${a.store}</span>`).join(' ');
+      totalBest += alt.price;
+      html += `<div class="tr">
+        <div><strong>${best.product.name}</strong><div class="small">Best price found</div></div>
+        <div class="hide-sm">${alts}</div>
+        <div class="price hide-sm">${money(alt.price)}</div>
+        <div class="hide-sm"><span class="tag">Estimated</span></div>
+        <div><a class="btn" href="${alt.url}" target="_blank" rel="noopener">Buy</a></div>
+        <div class="small">✓</div>
+      </div>`;
+    }
+    holder.innerHTML = html;
+
+    const totalBox = document.getElementById('totals');
+    if(totalBox){
+      totalBox.innerHTML = `<div class="card"><h2>Estimated Best Basket</h2>
+      <p class="small">Based on matches we found in the current database. Update store links & prices anytime.</p>
+      <div class="tr"><div><strong>Total</strong></div><div class="hide-sm"></div><div class="price">${money(totalBest)}</div><div class="hide-sm"></div><div></div><div></div></div>
+      <div><a class="btn ghost" href="#home">Edit basket</a></div></div>`;
+    }
+  }
+
+  // Admin
+  function initAdmin(){
+    const ta = document.getElementById('json');
+    const saveBtn = document.getElementById('save');
+    const resetBtn = document.getElementById('reset');
+    const toggle = document.getElementById('toggle-edit');
+    const leadsBtn = document.getElementById('download-leads');
+    if(!ta) return;
+
+    // Load current
+    ta.value = JSON.stringify(getDB(), null, 2);
+
+    let editMode = !!localStorage.getItem('bb_products_override');
+    function syncToggle(){ toggle.textContent = 'Edit Mode: ' + (editMode?'On':'Off'); }
+    syncToggle();
+
+    toggle.addEventListener('click', ()=>{
+      editMode = !editMode;
+      if(!editMode){ localStorage.removeItem('bb_products_override'); ta.value = JSON.stringify(getDefaultDB(), null, 2); }
+      syncToggle();
+      alert('Edit mode ' + (editMode?'enabled.':'disabled.'));
+    });
+
+    saveBtn.addEventListener('click', ()=>{
+      try{
+        const parsed = JSON.parse(ta.value);
+        localStorage.setItem('bb_products_override', JSON.stringify(parsed));
+        editMode = true; syncToggle();
+        alert('Saved locally. (This changes ONLY your browser preview. To go live, paste the same JSON here and commit it into this file.)');
+      }catch(e){ alert('Invalid JSON: ' + e.message); }
+    });
+
+    resetBtn.addEventListener('click', ()=>{
+      localStorage.removeItem('bb_products_override');
+      ta.value = JSON.stringify(getDefaultDB(), null, 2);
+      editMode = false; syncToggle();
+    });
+
+    leadsBtn.addEventListener('click', downloadLeads);
+  }
+
+  // Boot
+  document.getElementById('y').textContent = new Date().getFullYear();
+  parseHash();
+  initHome();
+  if(location.hash==='#results') setTimeout(renderResults,0);
+  if(location.hash==='#admin') setTimeout(initAdmin,0);
+  window.addEventListener('hashchange', ()=>{
+    parseHash();
+    if(location.hash==='#results') setTimeout(renderResults,0);
+    if(location.hash==='#admin') setTimeout(initAdmin,0);
+  });
+  </script>
+</body>
+</html>
