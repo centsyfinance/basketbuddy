@@ -154,55 +154,7 @@ hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:16px 0}
   </div>
 
   <!-- Seed DB (you can edit live in Admin) -->
-  <script id="bb-db" type="application/json">
-  [
-    {
-      "sku": "milk-2l",
-      "name": "Semi-skimmed Milk 2L",
-      "alts": [
-        {"store":"Tesco","price":1.65,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"ASDA","price":1.60,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"Sainsbury's","price":1.70,"url":"https://www.sainsburys.co.uk/","affiliate_tag":"YOUR_TAG"}
-      ]
-    },
-    {
-      "sku": "bread-warburtons",
-      "name":"Warburtons Medium Sliced Bread 800g",
-      "alts":[
-        {"store":"Tesco","price":1.45,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"ASDA","price":1.40,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"Morrisons","price":1.45,"url":"https://groceries.morrisons.com/","affiliate_tag":"YOUR_TAG"}
-      ]
-    },
-    {
-      "sku":"iphone-usb-c-cable",
-      "name":"USB-C to Lightning Cable 1m",
-      "alts":[
-        {"store":"Amazon UK","price":8.99,"url":"https://www.amazon.co.uk/?tag=YOURTAG-21","affiliate_tag":"YOURTAG-21"},
-        {"store":"Argos","price":10.99,"url":"https://www.argos.co.uk/","affiliate_tag":""},
-        {"store":"Currys","price":11.99,"url":"https://www.currys.co.uk/","affiliate_tag":""}
-      ]
-    },
-    {
-      "sku":"fairy-650ml",
-      "name":"Fairy Liquid Original 650ml",
-      "alts":[
-        {"store":"Tesco","price":1.50,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"ASDA","price":1.45,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"B&M","price":1.39,"url":"https://www.bmstores.co.uk/","affiliate_tag":""}
-      ]
-    },
-    {
-      "sku":"lenor-1.2l",
-      "name":"Lenor Fabric Conditioner 1.2L",
-      "alts":[
-        {"store":"Tesco","price":3.50,"url":"https://www.tesco.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"ASDA","price":3.25,"url":"https://groceries.asda.com/","affiliate_tag":"YOUR_TAG"},
-        {"store":"Amazon UK","price":3.99,"url":"https://www.amazon.co.uk/?tag=YOURTAG-21","affiliate_tag":"YOURTAG-21"}
-      ]
-    }
-  ]
-  </script>
+  <script src="products.json" type="application/json" id="bb-db"></script>
 
   <script>
   // Router (hash views)
