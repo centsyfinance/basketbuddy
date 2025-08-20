@@ -1,0 +1,125 @@
+{
+  "Groceries": [
+    {
+      "sku": "heinz-beans-415g-6pk",
+      "name": "Heinz Baked Beans 415g (Pack of 6)",
+      "alts": [
+        {"store": "Amazon","price": 5.00,"url": "https://www.amazon.co.uk/dp/B00HZF93GS?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "kelloggs-cornflakes-720g",
+      "name": "Kellogg’s Corn Flakes 720g",
+      "alts": [
+        {"store": "Amazon","price": 3.00,"url": "https://www.amazon.co.uk/dp/B00HZG3C0S?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "pg-tips-240",
+      "name": "PG Tips 240 Pyramid Tea Bags",
+      "alts": [
+        {"store": "Amazon","price": 5.99,"url": "https://www.amazon.co.uk/dp/B00HZJXG5M?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "nutella-750g",
+      "name": "Nutella Hazelnut Spread 750g",
+      "alts": [
+        {"store": "Amazon","price": 6.00,"url": "https://www.amazon.co.uk/dp/B00HZG8Q6M?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "walkers-crisps-22pk",
+      "name": "Walkers Variety Crisps, 22 Pack",
+      "alts": [
+        {"store": "Amazon","price": 5.50,"url": "https://www.amazon.co.uk/dp/B00HZG5XY0?tag=basketbuddyuk-21"}
+      ]
+    }
+    // … add ~20 more groceries here
+  ],
+  "Household": [
+    {
+      "sku": "fairy-liquid-433ml",
+      "name": "Fairy Original Washing Up Liquid 433ml",
+      "alts": [
+        {"store": "Amazon","price": 1.75,"url": "https://www.amazon.co.uk/dp/B00L6K9NQ8?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "persil-bio-24w",
+      "name": "Persil Bio Laundry Capsules 24 Washes",
+      "alts": [
+        {"store": "Amazon","price": 6.50,"url": "https://www.amazon.co.uk/dp/B07Y5RBL3D?tag=basketbuddyuk-21"}
+      ]
+    }
+    // … add ~20 more household here
+  ],
+  "Baby": [
+    {
+      "sku": "pampers-size3-100",
+      "name": "Pampers Baby-Dry Size 3 Nappies, 100 Count",
+      "alts": [
+        {"store": "Amazon","price": 14.00,"url": "https://www.amazon.co.uk/dp/B09J4QNCGR?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "huggies-wipes-12pk",
+      "name": "Huggies Pure Baby Wipes 12x56",
+      "alts": [
+        {"store": "Amazon","price": 10.00,"url": "https://www.amazon.co.uk/dp/B00HZF6SH0?tag=basketbuddyuk-21"}
+      ]
+    }
+    // … add ~10 more baby here
+  ],
+  "Toiletries": [
+    {
+      "sku": "colgate-toothpaste-4pk",
+      "name": "Colgate Total Original Toothpaste 4x75ml",
+      "alts": [
+        {"store": "Amazon","price": 8.00,"url": "https://www.amazon.co.uk/dp/B00LZVQZGO?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "dove-bodywash-6pk",
+      "name": "Dove Deeply Nourishing Body Wash 6x225ml",
+      "alts": [
+        {"store": "Amazon","price": 10.00,"url": "https://www.amazon.co.uk/dp/B01M0GZ5HO?tag=basketbuddyuk-21"}
+      ]
+    }
+    // … add ~15 more toiletries here
+  ],
+  "Drinks & Snacks": [
+    {
+      "sku": "coca-cola-24pk",
+      "name": "Coca-Cola Original Taste 330ml Cans, Pack of 24",
+      "alts": [
+        {"store": "Amazon","price": 14.00,"url": "https://www.amazon.co.uk/dp/B00HZF7SA2?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "redbull-12pk",
+      "name": "Red Bull Energy Drink 250ml Cans, Pack of 12",
+      "alts": [
+        {"store": "Amazon","price": 12.00,"url": "https://www.amazon.co.uk/dp/B004H4T2V4?tag=basketbuddyuk-21"}
+      ]
+    }
+    // … add ~15 more drinks/snacks here
+  ],
+  "Electronics": [
+    {
+      "sku": "iphone-charger-apple",
+      "name": "Apple USB-C to Lightning Cable (1m)",
+      "alts": [
+        {"store": "Amazon","price": 15.00,"url": "https://www.amazon.co.uk/dp/MX0K2ZM/A?tag=basketbuddyuk-21"}
+      ]
+    },
+    {
+      "sku": "echo-dot-5thgen",
+      "name": "Echo Dot (5th generation, 2022 release)",
+      "alts": [
+        {"store": "Amazon","price": 29.99,"url": "https://www.amazon.co.uk/dp/B09B2W5CWX?tag=basketbuddyuk-21"}
+      ]
+    }
+    // … add ~10 more electronics here
+  ]
+}
